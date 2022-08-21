@@ -1,7 +1,8 @@
-import "./navbar.css";
+import React from 'react'
+import "./navbar.css"
 import logo from "./JuegosGratisLogo.png"
 
-function NavBar() {
+export const NavBar = () => {
   return (
     <header className="header">
       <div>
@@ -17,7 +18,6 @@ function NavBar() {
         </ul>
       </nav>
     </header>
-  );
+  )
 }
 
-export default NavBar;
