@@ -1,0 +1,31 @@
+.cuadrado{
+    width: 10vw;
+    height: 10vw;
+    border-radius: 50%;
+    background: conic-gradient(#a2ff11 286deg,#000 1deg);
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: absolute;
+    top: 0;
+    left: 0;
+}
+.porcentaje{
+    width: 8vw;
+    height: 8vw;
+    border-radius: 50%;
+    position: absolute;
+    background-color: #000;
+    color: #a2ff11;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 2vw;
+}
+.carta {
+    width: 40vw;
+    height: 30vw;
+    background-color: #78be07;
+    position: relative;
+}
