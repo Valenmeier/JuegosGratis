@@ -1,11 +1,12 @@
 import React from 'react'
 import "./navbar.css"
 import logo from "./JuegosGratisLogo.png"
+import {Carrito} from '../Carrito/Carrito'
 
 export const NavBar = () => {
   return (
     <header className="header">
-      <div>
+      <div className='logo'>
         <img src={logo} alt="JuegosGratisLogo" />
         <h4>JuegosGratis</h4>
       </div>
@@ -14,7 +15,7 @@ export const NavBar = () => {
           <li><a href="#"> Inicio </a></li>
           <li><a href="#"> Catálogo </a></li>
           <li><a href="#"> Atención al cliente </a></li>
-          <li><a href="#"> Adquirir </a></li>
+          <li><Carrito/></li>
         </ul>
       </nav>
     </header>

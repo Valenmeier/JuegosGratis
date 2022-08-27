@@ -6,7 +6,7 @@ export const App = () => {
   return (
     <div className="App">
       <NavBar/>
-      <Main titulo="Juegos"/>
+      <Main saludo="Buenass, este es un saludo enviado por parametros"/>
     </div>
   )
 }

@@ -1,0 +1,20 @@
+.carrito{
+    cursor: pointer;
+    font-size: 1.5vw;
+    display: flex;
+    justify-content: space-evenly;
+    position: relative;
+}
+.carrito h5 {
+    font-size: 1.2vw;
+    position: absolute;
+    background-color: #f00;
+    height: 1.2vw;
+    width: 1.2vw;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 50%;
+    right: -1vh;
+    top:-1.2vh;
+}

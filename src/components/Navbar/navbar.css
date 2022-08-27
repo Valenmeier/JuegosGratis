@@ -8,22 +8,21 @@
     align-items: center;
     overflow: hidden;
 }
-.header div{
+.header .logo{
     overflow: hidden;
     height: 100%;
-    width: auto;
     display: flex;
     justify-content: center;
     align-items: center;
     overflow: hidden;
 }
-.header div img{
+.header .logo img{
     height: 8vh;
     width: auto;
     object-fit: cover;
     object-position: center;
 }
-.header div h4{
+.header .logo h4{
     font-size: 2vw;
     justify-content: center;
     align-self: center;
@@ -34,10 +33,15 @@
 }
 .barraDeNavegacion ul {
     display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100%;
     gap: 2vw;
 }
 .barraDeNavegacion ul li {
     list-style: none;
+    height: 100%;
+    font-size: 1.2vw;
 }
 .barraDeNavegacion ul li a {
     text-decoration: none;
