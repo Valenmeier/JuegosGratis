@@ -1,7 +1,7 @@
 import React from 'react'
 import "./navbar.css"
 import logo from "./JuegosGratisLogo.png"
-import {Carrito} from '../Carrito/Carrito'
+import {CartWidget} from '../CartWidget/CartWidget'
 
 export const NavBar = () => {
   return (
@@ -15,7 +15,7 @@ export const NavBar = () => {
           <li><a href="#"> Inicio </a></li>
           <li><a href="#"> Catálogo </a></li>
           <li><a href="#"> Atención al cliente </a></li>
-          <li><Carrito/></li>
+          <li><CartWidget/></li>
         </ul>
       </nav>
     </header>
