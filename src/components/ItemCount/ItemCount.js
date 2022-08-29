@@ -1,13 +1,11 @@
 import React from "react";
-import { useState} from "react";
+import { useState } from "react";
 import "./counter.css";
 import { BsFillCartFill } from "react-icons/bs";
 
-export const ItemCount = ({ stock, initial,product }) => {
-  let valorInicial = Number(initial);
-  let stockInicial=Number(stock)
-  const [contador, setContador] = useState(valorInicial);
-  const [stockTotal, onAdd] = useState(stockInicial);
+export const ItemCount = ({ stock, initial, product }) => {
+  const [contador, setContador] = useState(initial);
+  const [stockTotal, onAdd] = useState(stock);
 
   let suma = () => {
     if (contador >= stockTotal) {
@@ -25,23 +23,22 @@ export const ItemCount = ({ stock, initial,product }) => {
     }
   };
   let manejoDeCarrito = () => {
-    if(stockTotal>=contador&stockTotal!==0){
-      let mensaje=`Se han agregado ${contador} ${product} al carrito`
-      let cantidadDisponible=Number(stockTotal) - contador
-      debugger
-      if(contador>cantidadDisponible){
+    if ((stockTotal >= contador) & (stockTotal !== 0)) {
+      let mensaje = `Se han agregado ${contador} ${product} al carrito`;
+      let cantidadDisponible = Number(stockTotal) - contador;
+      if (contador > cantidadDisponible) {
         onAdd(cantidadDisponible);
-        setContador(cantidadDisponible)
-      }else{
+        setContador(cantidadDisponible);
+      } else {
         onAdd(cantidadDisponible);
-        setContador(contador)
+        setContador(contador);
       }
-      alert(mensaje)
-    }else{
-      alert(`No hay suficiente stock`)
+      alert(mensaje);
+    } else {
+      alert(`No hay suficiente stock`);
     }
   };
-  
+
   return (
     <>
       <h5>Stock disponible:{stockTotal}</h5>

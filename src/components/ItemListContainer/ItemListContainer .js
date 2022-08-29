@@ -6,7 +6,7 @@ export const ItemListContainer  = () => {
     return (
     <main className='contenedorMain'>
       
-        <ItemCount stock="10" initial="1" product="banana"/>
+        <ItemCount stock={10} initial={1} product="banana"/>
     </main>
   )
 }
