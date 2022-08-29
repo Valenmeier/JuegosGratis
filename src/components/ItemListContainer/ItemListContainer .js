@@ -1,10 +1,12 @@
 import React from 'react'
 import "./estilosMain.css"
+import {ItemCount} from '../ItemCount/ItemCount'
 
-export const ItemListContainer  = ({mensaje}) => {
+export const ItemListContainer  = () => {
     return (
-    <div className='contenedorMain'>
-        {mensaje}
-    </div>
+    <main className='contenedorMain'>
+      
+        <ItemCount stock="10" initial="1" product="banana"/>
+    </main>
   )
 }
