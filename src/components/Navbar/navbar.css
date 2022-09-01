@@ -1,7 +1,7 @@
 .header{
     background-color: #181818;
     color: #a2ff11;
-    width: 100vw;
+    max-width: 100vw;
     height: 10vh;   
     display: flex;
     justify-content: space-between;
@@ -30,19 +30,26 @@
 }
 .barraDeNavegacion{
     margin-right: 2vw;
+    height: 100%;
 }
 .barraDeNavegacion ul {
     display: flex;
     justify-content: center;
     align-items: center;
     height: 100%;
+    width: 100%;
     gap: 2vw;
 }
 .barraDeNavegacion ul li {
     list-style: none;
-    height: 100%;
+    height: 10vh;
+    width: auto;
     font-size: 1.2vw;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
+
 .barraDeNavegacion ul li a {
     text-decoration: none;
     color: #a2ff11;

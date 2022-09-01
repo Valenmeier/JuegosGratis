@@ -1,12 +1,12 @@
-import React from 'react'
-import "./carrito.css"
+import React from "react";
+import "./carrito.css";
 import { BsFillCartFill } from "react-icons/bs";
 
 export const CartWidget = () => {
   return (
-    <div className='carrito'>
-      <h5>1</h5>
-      <BsFillCartFill/>
+    <div className="carrito">
+      <BsFillCartFill />
+        <h5>5</h5>
     </div>
-  )
-}
+  );
+};
