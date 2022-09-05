@@ -3,7 +3,7 @@ import { useState } from "react";
 import "./counter.css";
 import { BsFillCartFill } from "react-icons/bs";
 
-export const ItemCount = ({ stock, initial, product }) => {
+export const ItemCount = ({ stock, initial, product, price}) => {
   const [contador, setContador] = useState(initial);
   const [stockTotal, onAdd] = useState(stock);
 
@@ -38,7 +38,7 @@ export const ItemCount = ({ stock, initial, product }) => {
       alert(`No hay suficiente stock`);
     }
   };
-
+  
   return (
     <>
       <h5>Stock disponible:{stockTotal}</h5>
@@ -55,6 +55,7 @@ export const ItemCount = ({ stock, initial, product }) => {
         <BsFillCartFill />
         Agregar al carrito
       </button>
+      <button className="agregarAlCarrito confirmarCompra">Comprar</button>
     </>
   );
 };

@@ -1,0 +1,30 @@
+.loaderContenedor{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    font-size: 3vw;
+    width: 100vw;
+    height: 100%;
+    gap: 4vw;
+    text-align: center;
+}
+
+.loader {
+    width: 5vw;
+    height: 5vw;
+    border-radius: 50%;
+    border: .5vw solid var(--principal);
+    border-top: .5vw solid #000;
+    animation: girandoLoader .8s infinite linear;
+    z-index: 1000;
+}
+
+@keyframes girandoLoader {
+    0%{
+        transform: rotate(0deg);
+    }
+    100%{
+        transform: rotate(360deg);
+    }
+}

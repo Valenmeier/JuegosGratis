@@ -1,15 +1,21 @@
 import React from "react";
 import { Item } from "../Item/Item";
-import "./itemlist.css"
+import "./itemlist.css";
 
-export const ItemList = ( {datos} ) => {
+export const ItemList = ({ datos }) => {
   return (
-    <section className="contenedorCartasInicio">
-      {
-        datos.map((dato)=>{   
-           return <Item key={dato.id} name={dato.name} image={dato.image} rate={dato.rate}/>
-        })
-      }
-    </section>
+    <>
+      <section className="contenedorCartasInicio">
+        <h4 className="Titulo">Juegos gratis actuales:</h4>
+        {datos.map((dato) => {
+          return (
+            <Item
+              key={dato.id}
+              dato={dato}
+            />
+          );
+        })}
+      </section>
+    </>
   );
 };
