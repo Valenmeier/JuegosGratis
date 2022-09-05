@@ -2,21 +2,30 @@ import React from "react";
 import "./itemDetailContainer.css";
 import { ItemDetail } from "../ItemDetail/ItemDetail";
 import { Loader } from "../Loader/Loader";
-
-//* Esto es transitorio, hasta que los datos los envien los botones
+import { useState, useEffect } from "react";
 import { data } from "../ItemListContainer/mock-data";
 
 // ----------
 
 export const ItemDetailContainer = () => {
-  let datos = data[0]; //?--> Esto también se cambiará, ya que los datos van a venir de prop
-  let fondo = {
-    backgroundImage:`url(${datos.image})`
-  }
-  
+  const [datos, setDatos] = useState([]);
+  const getData = new Promise((resolve, reject) => {
+    setTimeout(() => {
+      resolve(data);
+    }, 2000);
+  });
+
+  useEffect(() => {
+    getData.then((res) => {
+      setDatos(res);
+    });
+  }, []);
+
   return (
-    <section className="ContenedorDeSeccion" style={fondo}>
-      {datos.id >= 0 ? <ItemDetail item={datos} /> : <Loader text="Juego"/>}
+    <section>
+      {datos.length >0? datos.map((dato) => {
+        return <ItemDetail key={dato.id} item={dato} />;
+      }):<Loader text="detalles"/>}
     </section>
   );
 };

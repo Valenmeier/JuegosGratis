@@ -1,8 +1,4 @@
-.ContenedorDeSeccion{
-    position: absolute;
-    background-repeat: no-repeat;
-    background-position: center;
-    background-size: cover;
+section{
     width: 100vw;
-    height: 90vh;
+    min-height: 90vh;
 }

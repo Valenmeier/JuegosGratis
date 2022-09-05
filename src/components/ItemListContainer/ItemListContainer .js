@@ -27,8 +27,9 @@ export const ItemListContainer = () => {
 
   return (
     <main className="contenedorMain">
-      {items.length > 0 ? //*   <ItemList datos={items} /> --> Recordar activar ItemList para ver inicio correctamente
-      <ItemDetailContainer/> : <Loader text="inicio"/>}
+      {items.length > 0 ?    
+      //<ItemList datos={items} />
+      <ItemDetailContainer/>  : <Loader text="inicio"/>}
     </main>
   );
 };
