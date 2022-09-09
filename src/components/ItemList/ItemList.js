@@ -6,7 +6,7 @@ export const ItemList = ({ datos }) => {
   return (
     <>
       <section className="contenedorCartasInicio">
-        <h4 className="Titulo">Juegos gratis actuales:</h4>
+        <h4 className="Titulo">Nuestros juegos:</h4>
         {datos.map((dato) => {
           return (
             <Item

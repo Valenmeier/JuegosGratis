@@ -1,6 +1,9 @@
 .contenedorMain {
-    --principal:#a2ff11;
-  background-color: #000;
+  --principal:#a2ff11;
+  background: url(https://thumbs.gfycat.com/AgedHotCaterpillar-size_restricted.gif);
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
   color: var(--principal);
   width: 100vw;
   height: 90vh;

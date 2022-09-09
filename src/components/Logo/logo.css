@@ -1,0 +1,21 @@
+.logo{
+    overflow: hidden;
+    min-height: 10vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    overflow: hidden;
+}
+ .logo img{
+    height: 8vh;
+    width: auto;
+    object-fit: cover;
+    object-position: center;
+}
+ .logo h4{
+    font-size: 2vw;
+    justify-content: center;
+    align-self: center;
+    margin-bottom: .5vw;
+    color: #a2ff11;
+}

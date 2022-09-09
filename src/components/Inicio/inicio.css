@@ -1,0 +1,91 @@
+.presentacion {
+  width: 100vw;
+  height: 90vh;
+}
+.fondoInicio {
+  position: absolute;
+  width: 100vw;
+  height: 100vh;
+  top: 0;
+  z-index: -100;
+}
+.textoPresentacion {
+  width: 100vw;
+  height: 90vh;
+  background: rgba(0, 0, 0, 0.5);
+  box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.37);
+  backdrop-filter: blur(4px);
+  -webkit-backdrop-filter: blur(4px);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  --principal:rgb(162, 255, 17);
+  color: var(--principal);
+  font-size: 10vw;
+  
+}
+.logoDeInicio {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.textoPresentacion .logo {
+  flex-direction: column;
+  overflow: visible;
+}
+.textoPresentacion .logo h4 {
+  font-size: 6vw;
+  text-shadow: 0 0 1vw #000;
+  color: var(--principal);
+  padding: 1vw;
+  animation: parpadeo 5s linear infinite;
+  transition: ease-in .5s;
+}
+.textoPresentacion .logo img {
+  width: 15vw;
+  height: auto;
+  animation: parpadeo 5s linear infinite;
+}
+@keyframes parpadeo {
+  0% {
+    filter: drop-shadow(0px 0px 0.8vw var(--principal));
+  }
+  50% {
+    filter: drop-shadow(0px 0px 2vw var(--principal));
+  }
+  100% {
+    filter: drop-shadow(0px 0px 0.8vw var(--principal));
+  }
+}
+.botonCatalogo {
+  height: 15vh;
+  width: 100vw;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  overflow: hidden;
+  text-decoration: none;
+}
+.botonCatalogo button {
+  height: 5vw;
+  width: 15vw;
+  font-size: 1.5vw;
+  border-radius: 15vw;
+  background-color: #000;
+  color: var(--principal);
+  animation: bordiar 1s linear infinite;
+  border: 0.4vw solid #000;
+  cursor: pointer;
+  transition: all .5s linear;   
+}
+
+@keyframes bordiar {
+  0%{
+    border-right-color: var(--principal);
+    border-left-color:var(--principal) ;
+  }
+}
+.nuevoEstilo{
+  --principal:rgb(221, 32, 239);
+}

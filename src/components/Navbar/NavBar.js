@@ -1,20 +1,21 @@
 import React from 'react'
 import "./navbar.css"
-import logo from "./JuegosGratisLogo.png"
+import { AiFillHome } from "react-icons/ai";
 import {CartWidget} from '../CartWidget/CartWidget'
+import {Link} from 'react-router-dom'
+import {NavLink} from "react-router-dom";
+import {Logo} from "../Logo/Logo"
+
 
 export const NavBar = () => {
   return (
     <header className="header">
-      <div className='logo'>
-        <img src={logo} alt="JuegosGratisLogo" />
-        <h4>JuegosGratis</h4>
-      </div>
+      <Link to={"/"}><Logo/></Link>
       <nav className="barraDeNavegacion">
         <ul>
-          <li><a href="#"> Inicio </a></li>
-          <li><a href="#"> Catálogo </a></li>
-          <li><a href="#"> Atención al cliente </a></li>
+          <li><NavLink className={({isActive})=>isActive?"clase1":"clase2"} to="/">Inicio <AiFillHome/>  </NavLink></li>
+          <li><NavLink className={({isActive})=>isActive?"clase1":"clase2"} to="/catalogo"> Catálogo </NavLink></li>
+          <li><NavLink className={({isActive})=>isActive?"clase1":"clase2"} to="/atencion-al-cliente"> Atención al cliente </NavLink></li>
           <li><CartWidget/></li>
         </ul>
       </nav>
