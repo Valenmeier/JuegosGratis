@@ -6,6 +6,7 @@ import { BrowserRouter, Routes, Route } from "react-router-dom";
 import { Inicio } from "./components/Inicio/Inicio";
 import {AtencionAlCliente} from "./components/AtencionAlCliente/AtencionAlCliente"
 
+
 export const App = () => {
   return (
     <BrowserRouter>
@@ -17,6 +18,7 @@ export const App = () => {
           <Route path="/juegos" element={<ItemListContainer />} />
           <Route path="/detalles/:idJuego" element={<ItemDetailContainer/>}/>
           <Route path="/atencion-al-cliente" element={<AtencionAlCliente/>}/>
+
         </Routes>
         {/* <NavBar />
         <ItemListContainer />

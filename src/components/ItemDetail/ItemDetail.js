@@ -1,12 +1,21 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import "./item.css";
 import { ItemCount } from "../ItemCount/ItemCount";
 
 export const ItemDetail = ({ item }) => {
   let { name, description, price, image, stock } = item;
-
+  const [contador, setContador] = useState(1);
+  useEffect(() => {
+    setPrecio(Number(price.slice(1))*contador)
+    console.log(contador)
+  }, [contador])
+  
+  const [precio,setPrecio]=useState(Number(price.slice(1)))
   let fondo = {
     backgroundImage: `url(${image})`,
+  };
+  const vincular = (dato) => {
+    setContador(dato);
   };
   return (
     <section className="ContenedorDeSeccion" style={fondo}>
@@ -15,7 +24,7 @@ export const ItemDetail = ({ item }) => {
           <img src={image} alt="tower" />
           <div className="precioDetalle">
             <h5>Precio:</h5>
-            <h5>{price}</h5>
+            <h5>${precio}</h5>
           </div>
         </div>
         <div className="detallesDeProducto">
@@ -28,7 +37,13 @@ export const ItemDetail = ({ item }) => {
             </div>
           </div>
           <div className="contadorDetalle">
-            <ItemCount stock={stock} initial={1} price={price} />
+            <ItemCount
+              stock={stock}
+              initial={1}
+              price={price}
+              product={name}
+              vincular={vincular}
+            />
           </div>
         </div>
       </section>
