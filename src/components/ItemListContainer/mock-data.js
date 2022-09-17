@@ -3,7 +3,7 @@ export const data = [
     id: 0,
     name: "Tower of fantasy",
     description: "Tower of Fantasy es un juego de rol de acción de mundo abierto gratuito desarrollado por Hotta Studio, una subsidiaria de Perfect World. ",
-    price: "$280",
+    price: "$0",
     image:
       "https://as01.epimg.net/meristation/imagenes/2022/08/16/noticias/1660636919_112852_1660637337_noticia_normal.jpg",
     stock: 20,

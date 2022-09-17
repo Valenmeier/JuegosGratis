@@ -1,22 +1,32 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useState,useContext } from "react";
 import "./item.css";
 import { ItemCount } from "../ItemCount/ItemCount";
+import { CartContext } from "../context/CartContext";
+
 
 export const ItemDetail = ({ item }) => {
+
+  const {addItem}=useContext(CartContext);
+
   let { name, description, price, image, stock } = item;
   const [contador, setContador] = useState(1);
+
   useEffect(() => {
-    setPrecio(Number(price.slice(1))*contador)
-    console.log(contador)
-  }, [contador])
-  
-  const [precio,setPrecio]=useState(Number(price.slice(1)))
+    setPrecio(Number(price.slice(1)) * contador);
+  }, [contador]);
+
+  const [precio, setPrecio] = useState(Number(price.slice(1)));
+
   let fondo = {
     backgroundImage: `url(${image})`,
   };
-  const vincular = (dato) => {
+  let vincular = (dato) => {
     setContador(dato);
   };
+  let añadirAlCarrito=(dato)=>{
+    addItem(item,dato)
+  }
+
   return (
     <section className="ContenedorDeSeccion" style={fondo}>
       <section className="detalleDelItem">
@@ -43,6 +53,7 @@ export const ItemDetail = ({ item }) => {
               price={price}
               product={name}
               vincular={vincular}
+              añadirAlCarrito={añadirAlCarrito}
             />
           </div>
         </div>

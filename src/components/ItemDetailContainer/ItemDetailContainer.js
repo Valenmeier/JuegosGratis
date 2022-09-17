@@ -7,8 +7,8 @@ import { data } from "../ItemListContainer/mock-data";
 import { useParams } from "react-router-dom";
 
 export const ItemDetailContainer = () => {
-  const {idJuego}=useParams()
-  const [datos, setDatos] = useState([]);
+  const { idJuego } = useParams();
+  const [datos, setDatos] = useState(undefined);
   const getData = new Promise((resolve, reject) => {
     setTimeout(() => {
       resolve(data);
@@ -17,17 +17,15 @@ export const ItemDetailContainer = () => {
 
   useEffect(() => {
     getData.then((res) => {
-      let detalle=res.filter((detail)=>detail.id==idJuego)
+      let detalle = res.find((detalle) => detalle.id == idJuego);
       setDatos(detalle);
     });
   }, []);
 
   return (
     <section>
-      {datos.length > 0 ? (
-        datos.map((dato) => {
-          return <ItemDetail key={dato.id} item={dato} />;
-        })
+      {datos ? (
+        <ItemDetail key={datos.id} item={datos} />
       ) : (
         <Loader text="detalles" />
       )}

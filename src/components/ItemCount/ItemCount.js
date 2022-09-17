@@ -1,15 +1,19 @@
 import React from "react";
 import { useState } from "react";
-import {useEffect} from "react";
+import { useEffect } from "react";
 import "./counter.css";
 import { BsFillCartFill } from "react-icons/bs";
 
-export const ItemCount = ({ stock, initial, product, vincular }) => {
+export const ItemCount = ({
+  stock,
+  initial,
+  product,
+  vincular,
+  añadirAlCarrito,
+}) => {
   const [contador, setContador] = useState(initial);
   const [stockTotal, onAdd] = useState(stock);
-  useEffect(()=>
-  vincular(contador)
-  ,[contador])
+  useEffect(() => vincular(contador), [contador]);
   let suma = () => {
     if (contador >= stockTotal) {
       alert(`Limite de stock alcanzado`);
@@ -36,6 +40,7 @@ export const ItemCount = ({ stock, initial, product, vincular }) => {
         onAdd(cantidadDisponible);
         setContador(contador);
       }
+      añadirAlCarrito(contador)
       alert(mensaje);
     } else {
       alert(`No hay suficiente stock`);

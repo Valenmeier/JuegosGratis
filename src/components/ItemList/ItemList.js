@@ -8,12 +8,7 @@ export const ItemList = ({ datos }) => {
       <section className="contenedorCartasInicio">
         <h4 className="Titulo">Nuestros juegos:</h4>
         {datos.map((dato) => {
-          return (
-            <Item
-              key={dato.id}
-              dato={dato}
-            />
-          );
+          return <Item key={dato.id} dato={dato} />;
         })}
       </section>
     </>

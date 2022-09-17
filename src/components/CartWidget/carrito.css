@@ -7,10 +7,13 @@
     width: 100%;
     overflow: visible;
     padding-right: 2vw;
-
+    
 }
 .carrito:first-child{
     cursor: pointer;
+}
+.carrito a {
+    color: var(--principal);
 }
 .carrito h5 {
     width: 1vw;
