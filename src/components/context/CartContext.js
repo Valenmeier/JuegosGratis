@@ -39,10 +39,21 @@ export const CartProvider = ({ children }) => {
   const clearAllItems = () => {
     setProductCartList([]);
   };
-
+  let precioFinal=500
+  let precios=[]
+  const obtenerPrecios = (precio) => {
+    precios.push(precio);
+  };
   return (
     <CartContext.Provider
-      value={{ productCartList, addItem, removeItem, clearAllItems }}
+      value={{
+        productCartList,
+        addItem,
+        removeItem,
+        clearAllItems,
+        precioFinal,
+        obtenerPrecios
+      }}
     >
       {children}
     </CartContext.Provider>

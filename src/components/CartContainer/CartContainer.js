@@ -1,31 +1,42 @@
-import React, { useContext } from "react";
+import React, { useContext, useEffect } from "react";
 import { CartContext } from "../context/CartContext";
+import "./carrito.css";
+import { Link } from "react-router-dom";
+import { IndividualCartItem } from "../IndividualCartItem/IndividualCartItem";
+import { useState } from "react";
+
 
 export const CartContainer = () => {
   const value = useContext(CartContext);
-
+  
+  
   let carritoOcupado = (
-    <div>
-      <div>
+    <div className="fondoCarritoLLeno">
+      <div className="fondoProductos">
+        <h5>Carrito:</h5>
         {value.productCartList.map((item, i) => (
-          <div className="productosEnCarrito" key={i}>
-            <p>
-              {item.name}-{item.quantity}
-            </p>
-            <button
-              onClick={() => {
-                value.removeItem(item.id);
-              }}
-            >
-              Eliminar del carrito
-            </button>
-          </div>
+          <IndividualCartItem key={i} item={item} i={i} value={value} />
         ))}
+      </div>
+      <div className="footerCarritoLleno">
+        <button>Comprar todo</button>
         <button onClick={value.clearAllItems}>Vaciar carrito</button>
+        <div>
+          <h5>Precio total: ${value.precioFinal}</h5>
+        </div>
       </div>
     </div>
   );
 
-  let carritoVacio = <h4>El carrito esta vacio</h4>;
+  let carritoVacio = (
+    <div className="carritoVacio">
+      <div className="capa">
+        <h4>El carrito está vacio</h4>
+        <Link to="/catalogo">
+          <button>Ir al catálogo</button>
+        </Link>
+      </div>
+    </div>
+  );
   return <>{value.productCartList[0] ? carritoOcupado : carritoVacio}</>;
 };

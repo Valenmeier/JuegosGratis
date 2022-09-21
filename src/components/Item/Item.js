@@ -1,8 +1,8 @@
 import React, { useState } from "react";
 import "./item.css";
-import {Link} from "react-router-dom"
+import { Link } from "react-router-dom";
 
-export const Item = ({ dato }) => {
+export const Item = ({ dato,i }) => {
   const { id, name, description, price, image, stock, rate } = dato;
   let valorFinal = rate,
     velocidad = 50;
@@ -21,16 +21,27 @@ export const Item = ({ dato }) => {
     color = "#80b918";
   }
 
-
   const nuevoEstilo = {
     background: `conic-gradient(${color} ${newrate * 3.6}deg,#000 1deg)`,
-    
   };
-  const nuevoColor={
-    color:`${color}`
-  }
+  const nuevoColor = {
+    color: `${color}`,
+  };
+  let activarInformacion = () => {
+    let informacion = document.querySelectorAll(".contenedorInformacion");
+    informacion[i].classList.toggle("activarInformacion");
+  };
+  let desactivarInformacion = () => {
+    let informacion = document.querySelectorAll(".contenedorInformacion");
+    informacion[i].classList.remove("activarInformacion");
+  };
+
   return (
-    <div className="carta">
+    <div
+      className="carta"
+      onMouseOver={activarInformacion}
+      onMouseOut={desactivarInformacion}
+    >
       <img src={image} alt={name} />
       <div className="contenedorCarta">
         <div className="cuadrado" style={nuevoEstilo}>
@@ -42,8 +53,9 @@ export const Item = ({ dato }) => {
       <div className="contenedorInformacion">
         <h4>{name}</h4>
         <div className="contenedorBotones">
-         <Link to={`/detalles/${id}`}><button className="botonInformacion">Más información</button></Link> 
-          <Link to={`/detalles/${id}`}><button className="botonJugar">Jugar</button></Link>
+          <Link to={`/detalles/${id}`}>
+            <button className="botonInformacion">Más información</button>
+          </Link>
         </div>
       </div>
     </div>

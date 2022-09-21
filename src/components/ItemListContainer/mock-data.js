@@ -8,6 +8,7 @@ export const data = [
       "https://as01.epimg.net/meristation/imagenes/2022/08/16/noticias/1660636919_112852_1660637337_noticia_normal.jpg",
     stock: 20,
     rate: 100,
+    link:"https://www.toweroffantasy-global.com/"
   },
   {
     id: 1,
