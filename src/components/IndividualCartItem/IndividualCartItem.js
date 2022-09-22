@@ -1,12 +1,25 @@
 import React from "react";
 import { BsFillTrashFill } from "react-icons/bs";
 import { GoTriangleUp, GoTriangleDown } from "react-icons/go";
-import { useState } from "react";
+import { useState, useEffect } from "react";
+import { useContext } from "react";
+import { CartContext } from "../context/CartContext";
 import "./estilos.css";
 
-export const IndividualCartItem = ({ item, i, value ,precio}) => {
+export const IndividualCartItem = ({ item, i }) => {
+  const contexto = useContext(CartContext)
   let [cantidad, setCantidad] = useState(item.quantity);
-
+  let [precio, setPrecio] = useState(cantidad * Number(item.price.slice(1)));
+  useEffect(() => {
+    setPrecio(cantidad * Number(item.price.slice(1)));
+  }, [cantidad]);
+  useEffect(() => {
+    contexto.price[0]
+      ? (contexto.price[i] = precio)
+      : contexto.price.push(precio);
+      let precioTotal=(contexto.price).reduce((acc,item)=>acc+item,0)
+      contexto.getTotalPrice(precioTotal)
+  }, [precio]);
   let aumentarCantidad = () => {
     if (cantidad >= item.stock) {
       alert(`No hay suficiente stock`);
@@ -15,10 +28,10 @@ export const IndividualCartItem = ({ item, i, value ,precio}) => {
     }
   };
   let disminuirCantidad = () => {
-    if (cantidad<=1) {
+    if (cantidad <= 1) {
       setCantidad(1);
     } else {
-      setCantidad(cantidad-1);
+      setCantidad(cantidad - 1);
     }
   };
   return (
@@ -29,7 +42,9 @@ export const IndividualCartItem = ({ item, i, value ,precio}) => {
       </div>
       <button
         onClick={() => {
-          value.removeItem(item.id);
+          let nuevaListaDePrecios=contexto.price.splice(i,1)
+          contexto.price=nuevaListaDePrecios
+          contexto.removeItem(item.id);
         }}
         title="Eliminar del carrito"
       >
@@ -38,7 +53,8 @@ export const IndividualCartItem = ({ item, i, value ,precio}) => {
       <div className="cantidadYPrecio">
         <div className="cantidadAumento">
           <h4>
-            Cantidad solicitada= <GoTriangleDown className="disminuir" onClick={disminuirCantidad} />
+            Cantidad solicitada={" "}
+            <GoTriangleDown className="disminuir" onClick={disminuirCantidad} />
             {cantidad}
             <GoTriangleUp onClick={aumentarCantidad} />{" "}
           </h4>
@@ -49,7 +65,7 @@ export const IndividualCartItem = ({ item, i, value ,precio}) => {
         <h4>Stock disponible = {item.stock}</h4>
       </div>
       <div className="precioTotalItem">
-        <h4>$ {cantidad * Number(item.price.slice(1))}</h4>
+        <h4>$ {precio}</h4>
       </div>
     </div>
   );

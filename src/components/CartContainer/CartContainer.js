@@ -8,21 +8,19 @@ import { useState } from "react";
 
 export const CartContainer = () => {
   const value = useContext(CartContext);
-  
-  
   let carritoOcupado = (
     <div className="fondoCarritoLLeno">
       <div className="fondoProductos">
         <h5>Carrito:</h5>
         {value.productCartList.map((item, i) => (
-          <IndividualCartItem key={i} item={item} i={i} value={value} />
+          <IndividualCartItem key={i} item={item} i={i} value={value}/>
         ))}
       </div>
       <div className="footerCarritoLleno">
         <button>Comprar todo</button>
         <button onClick={value.clearAllItems}>Vaciar carrito</button>
         <div>
-          <h5>Precio total: ${value.precioFinal}</h5>
+         <h5>Precio total= ${console.log(value)}</h5>
         </div>
       </div>
     </div>
