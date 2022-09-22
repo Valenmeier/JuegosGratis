@@ -3,7 +3,6 @@ import { CartContext } from "../context/CartContext";
 import "./carrito.css";
 import { Link } from "react-router-dom";
 import { IndividualCartItem } from "../IndividualCartItem/IndividualCartItem";
-import { useState } from "react";
 
 
 export const CartContainer = () => {
@@ -20,7 +19,7 @@ export const CartContainer = () => {
         <button>Comprar todo</button>
         <button onClick={value.clearAllItems}>Vaciar carrito</button>
         <div>
-         <h5>Precio total= ${console.log(value)}</h5>
+         <h5>Precio total= ${value.precioTotal()}</h5>
         </div>
       </div>
     </div>
