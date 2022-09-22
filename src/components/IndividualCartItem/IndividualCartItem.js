@@ -9,6 +9,9 @@ import "./estilos.css";
 export const IndividualCartItem = ({ item, i }) => {
   const contexto = useContext(CartContext);
   let [cantidad, setCantidad] = useState(item.quantity);
+  useEffect(() => {
+   contexto.addItem(item,cantidad)
+  }, [cantidad]);
 
   let aumentarCantidad = () => {
     if (cantidad >= item.stock) {
