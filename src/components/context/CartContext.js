@@ -69,6 +69,7 @@ export const CartProvider = ({ children }) => {
       (product) => product.id !== itemId
     );
     setProductCartList(newArreglo);
+    precioTotal();
   };
 
   const clearAllItems = () => {

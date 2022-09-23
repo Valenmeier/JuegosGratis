@@ -3,6 +3,7 @@ import { useState } from "react";
 import { useEffect } from "react";
 import "./counter.css";
 import { BsFillCartFill } from "react-icons/bs";
+import { Link } from "react-router-dom";
 
 export const ItemCount = ({
   stock,
@@ -11,6 +12,7 @@ export const ItemCount = ({
   vincular,
   añadirAlCarrito,
 }) => {
+  const [añadio, setAñadio] = useState(false);
   const [contador, setContador] = useState(initial);
   const [stockTotal, onAdd] = useState(stock);
   useEffect(() => vincular(contador), [contador]);
@@ -36,12 +38,15 @@ export const ItemCount = ({
       if (contador > cantidadDisponible) {
         onAdd(cantidadDisponible);
         setContador(cantidadDisponible);
+        setAñadio(true);
       } else {
         onAdd(cantidadDisponible);
         setContador(contador);
+        setAñadio(true);
       }
-      añadirAlCarrito(contador)
+      añadirAlCarrito(contador);
       alert(mensaje);
+      setAñadio(true);
     } else {
       alert(`No hay suficiente stock`);
     }
@@ -59,11 +64,17 @@ export const ItemCount = ({
           <button onClick={suma}>+</button>
         </div>
       </div>
-      <button onClick={manejoDeCarrito} className="agregarAlCarrito">
-        <BsFillCartFill />
-        Agregar al carrito
-      </button>
-      <button className="agregarAlCarrito confirmarCompra">Comprar</button>
+      {añadio ? (
+        <Link to="/cart" className=" agregarAlCarrito confirmarCompra">Finalizar Compra</Link>
+      ) : (
+        <>
+          <button onClick={manejoDeCarrito} className="agregarAlCarrito">
+            <BsFillCartFill />
+            Agregar al carrito
+          </button>
+          <button className="agregarAlCarrito confirmarCompra">Comprar</button>
+        </>
+      )}
     </>
   );
 };
