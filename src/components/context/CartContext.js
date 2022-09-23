@@ -1,11 +1,10 @@
-import React, { useState,useEffect } from "react";
+import React, { useState, useEffect } from "react";
 export const CartContext = React.createContext();
 
 export const CartProvider = ({ children }) => {
   const [productCartList, setProductCartList] = useState([]);
-  
+
   const addItem = (item, quantity) => {
-    
     let isInCart = (id) => {
       let existeElProducto = productCartList.find((item) => item.id === id);
       return existeElProducto;
@@ -30,6 +29,41 @@ export const CartProvider = ({ children }) => {
       setProductCartList(newArreglo);
     }
   };
+
+  const cambiarCantidad = (item, quantity) => {
+    let isInCart = (id) => {
+      let existeElProducto = productCartList.find((item) => item.id === id);
+
+      return existeElProducto;
+    };
+
+    if (isInCart) {
+      const newArreglo = [...productCartList];
+
+      const updateArr = newArreglo.map((element) => {
+        if (element.id === item.id) {
+          element.quantity = quantity;
+        }
+
+        return element;
+      });
+
+      setProductCartList(updateArr);
+    } else {
+      const newProduct = {
+        ...item,
+
+        quantity,
+      };
+
+      const newArreglo = [...productCartList];
+
+      newArreglo.push(newProduct);
+
+      setProductCartList(newArreglo);
+    }
+  };
+
   const removeItem = (itemId) => {
     const newArreglo = productCartList.filter(
       (product) => product.id !== itemId
@@ -40,10 +74,13 @@ export const CartProvider = ({ children }) => {
   const clearAllItems = () => {
     setProductCartList([]);
   };
-  
-  let precioTotal=()=>{
-    return productCartList.reduce((acc,item)=>(acc+(item.quantity*Number(item.price.slice(1)))),0)
-  }
+
+  let precioTotal = () => {
+    return productCartList.reduce(
+      (acc, item) => acc + item.quantity * Number(item.price.slice(1)),
+      0
+    );
+  };
   return (
     <CartContext.Provider
       value={{
@@ -51,7 +88,8 @@ export const CartProvider = ({ children }) => {
         addItem,
         removeItem,
         clearAllItems,
-        precioTotal
+        precioTotal,
+        cambiarCantidad
       }}
     >
       {children}

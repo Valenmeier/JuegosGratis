@@ -10,7 +10,7 @@ export const IndividualCartItem = ({ item, i }) => {
   const contexto = useContext(CartContext);
   let [cantidad, setCantidad] = useState(item.quantity);
   useEffect(() => {
-   contexto.addItem(item,cantidad)
+    contexto.cambiarCantidad(item, cantidad);
   }, [cantidad]);
 
   let aumentarCantidad = () => {
