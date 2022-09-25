@@ -40,17 +40,17 @@ export const CartContainer = () => {
   let carritoOcupado = (
     <div className="fondoCarritoLLeno">
       <div className="fondoProductos">
-        <form onSubmit={sendOrder}>
+        <form id="formularioCompra" onSubmit={sendOrder}>
           <label>
-            Nombre: <input type="text" className="nombreComprador" />
+            Nombre: <input type="text" className="nombreComprador" required />
           </label>
           <label>
-            Teléfono: <input type="text" className="telefonoComprador" />
+            Teléfono:{" "}
+            <input type="text" className="telefonoComprador" required />
           </label>
           <label>
-            Email: <input type="email" className="emailComprador" />
+            Email: <input type="email" className="emailComprador" required />
           </label>
-          <button type="submit">Enviar orden</button>
         </form>
         {idOrder && (
           <>
@@ -64,7 +64,9 @@ export const CartContainer = () => {
         ))}
       </div>
       <div className="footerCarritoLleno">
-        <button>Comprar todo</button>
+        <button type="submit" form="formularioCompra">
+          Comprar todo
+        </button>
         <button onClick={value.clearAllItems}>Vaciar carrito</button>
         <div>
           <h5>Precio total= ${value.precioTotal()}</h5>
