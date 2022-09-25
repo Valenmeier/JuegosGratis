@@ -38,6 +38,7 @@ export const IndividualCartItem = ({ item, i }) => {
           contexto.removeItem(item.id);
         }}
         title="Eliminar del carrito"
+        className="eliminar"
       >
         <BsFillTrashFill />
       </button>
