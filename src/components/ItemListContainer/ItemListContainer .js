@@ -12,6 +12,7 @@ export const ItemListContainer = () => {
   const { valor } = useParams();
 
   useEffect(() => {
+    setItems([]);
     const queryRef = !valor
       ? collection(db, "items")
       : query(collection(db, "items"), where("category", "==", valor));

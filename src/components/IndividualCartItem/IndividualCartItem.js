@@ -6,13 +6,12 @@ import { useContext } from "react";
 import { CartContext } from "../context/CartContext";
 import "./estilos.css";
 
-export const IndividualCartItem = ({ item, i }) => {
+export const IndividualCartItem = ({ item }) => {
   const contexto = useContext(CartContext);
   let [cantidad, setCantidad] = useState(item.quantity);
   useEffect(() => {
     contexto.cambiarCantidad(item, cantidad);
   }, [cantidad]);
-
   let aumentarCantidad = () => {
     if (cantidad >= item.stock) {
       alert(`No hay suficiente stock`);
@@ -27,16 +26,17 @@ export const IndividualCartItem = ({ item, i }) => {
       setCantidad(cantidad - 1);
     }
   };
+  let eliminarItem = () => {
+    contexto.removeItem(item.id);
+  };
   return (
-    <div className="productosEnCarrito" key={i}>
+    <div className="productosEnCarrito" key={item.id}>
       <img src={item.image} alt={item.name} />
       <div className="title">
         <h3>{item.name}</h3>
       </div>
       <button
-        onClick={() => {
-          contexto.removeItem(item.id);
-        }}
+        onClick={eliminarItem}
         title="Eliminar del carrito"
         className="eliminar"
       >

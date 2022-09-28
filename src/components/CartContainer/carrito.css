@@ -111,3 +111,8 @@
   font-size: 3vw;
   margin-bottom: 3vh;
 }
+#formularioCompra {
+  display: flex;
+  gap: 3.5vw;
+  
+}

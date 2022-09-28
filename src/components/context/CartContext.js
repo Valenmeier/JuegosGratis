@@ -68,6 +68,7 @@ export const CartProvider = ({ children }) => {
     const newArreglo = productCartList.filter(
       (product) => product.id !== itemId
     );
+    setProductCartList([])
     setProductCartList(newArreglo);
     precioTotal();
   };
@@ -90,7 +91,7 @@ export const CartProvider = ({ children }) => {
         removeItem,
         clearAllItems,
         precioTotal,
-        cambiarCantidad
+        cambiarCantidad,
       }}
     >
       {children}

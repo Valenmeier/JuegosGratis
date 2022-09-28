@@ -9,6 +9,9 @@ import { collection, addDoc, doc, updateDoc } from "firebase/firestore";
 export const CartContainer = () => {
   const value = useContext(CartContext);
   const [idOrder, setIdOrder] = useState("");
+  useEffect(()=>{
+    console.log(`Actualizado`)
+  },[value])
   let sendOrder = (e) => {
     e.preventDefault();
     const orden = {
@@ -59,8 +62,8 @@ export const CartContainer = () => {
           </>
         )}
         <h5>Carrito:</h5>
-        {value.productCartList.map((item, i) => (
-          <IndividualCartItem key={i} item={item} i={i} value={value} />
+        {value.productCartList.map((item) => (
+          <IndividualCartItem key={item.id} item={item}  value={value} />
         ))}
       </div>
       <div className="footerCarritoLleno">
