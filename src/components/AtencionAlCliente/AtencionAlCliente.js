@@ -6,6 +6,14 @@ import { SiWhatsapp } from "react-icons/si";
 import { CgMail } from "react-icons/cg";
 
 export const AtencionAlCliente = () => {
+  let crearNuevoIcono = (link, icono, nombre) => {
+    return (
+      <a className="redes" href={link} target="_blank">
+        {icono}
+        <h4>{nombre}</h4>
+      </a>
+    );
+  };
   return (
     <div className="contactoContenedor">
       <div className="contactarme">
@@ -15,38 +23,10 @@ export const AtencionAlCliente = () => {
         </h4>
       </div>
       <div className="contacto">
-        <a
-          className="redes"
-          href="https://www.linkedin.com/in/valentinmeier"
-          target="_blank"
-        >
-          <BsLinkedin />
-          <h4>Linkedin</h4>
-        </a>
-        <a
-          className="redes"
-          href="https://github.com/Valenmeier"
-          target="_blank"
-        >
-          <BsGithub />
-          <h4>Github</h4>
-        </a>
-        <a
-          className="redes"
-          href="https://api.whatsapp.com/send?phone=5493541211401&text=Hola Valentín, quiero contactarme con vos"
-          target="_blank"
-        >
-          <SiWhatsapp />
-          <h4>Whatsapp</h4>
-        </a>
-        <a
-          className="redes"
-          href="mailto:valentinmeier123@gmail.com"
-          target="_blank"
-        >
-          <CgMail />
-          <h4>Gmail</h4>
-        </a>
+        {crearNuevoIcono("https://www.linkedin.com/in/valentinmeier",<BsLinkedin />,"Linkedin")}
+        {crearNuevoIcono("https://github.com/Valenmeier",<BsGithub />,"Github")}
+        {crearNuevoIcono("https://api.whatsapp.com/send?phone=5493541211401&text=Hola Valentín, quiero contactarme con vos",<SiWhatsapp />,"Whatsapp")}
+        {crearNuevoIcono("mailto:valentinmeier123@gmail.com",<CgMail/>,"Gmail")}
       </div>
     </div>
   );

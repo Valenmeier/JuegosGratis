@@ -2,8 +2,8 @@ import React, { useState } from "react";
 import "./item.css";
 import { Link } from "react-router-dom";
 
-export const Item = ({ dato,i }) => {
-  const { id, name, description, price, image, stock, rate } = dato;
+export const Item = ({ dato, i }) => {
+  const { id, name, image, rate } = dato;
   let valorFinal = rate,
     velocidad = 50;
 
