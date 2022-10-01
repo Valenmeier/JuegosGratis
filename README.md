@@ -34,7 +34,6 @@ Esta página se diseñó con la finalidad de poder encontrar juegos, tanto grati
 | Nombre | Descripción |
 | ------ | ------ |
 | React icons | *Importación de iconos de React* |
-| React Bootstrap |*Se utilizaron componentes de React Bs, por ej: Containers y Cards* |
 | React Router Dom | *Enrutado de direcciones* |
 | Firebase | *Utilizado como base de datos de productos y ordenes*|
 
