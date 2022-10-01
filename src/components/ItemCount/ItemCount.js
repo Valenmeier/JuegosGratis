@@ -4,6 +4,7 @@ import { useEffect } from "react";
 import "./counter.css";
 import { BsFillCartFill } from "react-icons/bs";
 import { Link } from "react-router-dom";
+import Swal from "sweetalert2";
 
 export const ItemCount = ({
   stock,
@@ -11,6 +12,7 @@ export const ItemCount = ({
   product,
   vincular,
   añadirAlCarrito,
+  img,
 }) => {
   const [añadio, setAñadio] = useState(false);
   const [contador, setContador] = useState(initial);
@@ -18,7 +20,14 @@ export const ItemCount = ({
   useEffect(() => vincular(contador), [contador]);
   let suma = () => {
     if (contador >= stockTotal) {
-      alert(`Limite de stock alcanzado`);
+      Swal.fire({
+        title: `No hay suficiente stock`,
+        customClass: {
+          popup: "ModalCompra",
+          title: "textoModal",
+          confirmButton: "botonConfirmacion",
+        },
+      });
       return setContador(stockTotal);
     } else {
       setContador(contador + 1);
@@ -45,10 +54,27 @@ export const ItemCount = ({
         setAñadio(true);
       }
       añadirAlCarrito(contador);
-      alert(mensaje);
+      Swal.fire({
+        title: `${mensaje}`,
+        imageUrl: `${img}`,
+        imageAlt: `${product}`,
+        customClass: {
+          popup: "ModalCompra",
+          title: "textoModal",
+          image: "imagenModal",
+          confirmButton: "botonConfirmacion",
+        },
+      });
       setAñadio(true);
     } else {
-      alert(`No hay suficiente stock`);
+      Swal.fire({
+        title: `No hay suficiente stock`,
+        customClass: {
+          popup: "ModalCompra",
+          title: "textoModal",
+          confirmButton: "botonConfirmacion",
+        },
+      });
     }
   };
 
@@ -65,14 +91,15 @@ export const ItemCount = ({
         </div>
       </div>
       {añadio ? (
-        <Link to="/cart" className=" agregarAlCarrito confirmarCompra">Finalizar Compra</Link>
+        <Link to="/cart" className=" agregarAlCarrito confirmarCompra">
+          Finalizar Compra
+        </Link>
       ) : (
         <>
           <button onClick={manejoDeCarrito} className="agregarAlCarrito">
             <BsFillCartFill />
             Agregar al carrito
           </button>
-          <button className="agregarAlCarrito confirmarCompra">Comprar</button>
         </>
       )}
     </>

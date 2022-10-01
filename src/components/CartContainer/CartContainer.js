@@ -1,17 +1,16 @@
-import React, { useContext, useEffect, useState } from "react";
+import React, { useContext, useState } from "react";
 import { CartContext } from "../context/CartContext";
 import "./carrito.css";
 import { Link } from "react-router-dom";
 import { IndividualCartItem } from "../IndividualCartItem/IndividualCartItem";
 import { db } from "../../utils/firebase";
 import { collection, addDoc, doc, updateDoc } from "firebase/firestore";
+import Swal from "sweetalert2";
 
 export const CartContainer = () => {
   const value = useContext(CartContext);
   const [idOrder, setIdOrder] = useState("");
-  useEffect(()=>{
-    console.log(`Actualizado`)
-  },[value])
+
   let sendOrder = (e) => {
     e.preventDefault();
     const orden = {
@@ -27,19 +26,33 @@ export const CartContainer = () => {
     const queryRef = collection(db, "orders");
     addDoc(queryRef, orden).then((response) => setIdOrder(response.id));
   };
-  const updateOrder = () => {
-    const queryRef = doc(db, "orders", idOrder);
-    updateDoc(queryRef, {
-      buyer: {
-        name: document.querySelector(`.nombreComprador`).value,
-        phone: document.querySelector(`.telefonoComprador`).value,
-        email: document.querySelector(`.emailComprador`).value,
-        date: new Date().toLocaleString(),
-      },
-      items: value.productCartList,
-      total: value.precioTotal(),
-    }).then((res) => console.log(res));
+  let actualizarStock = (id, nuevoStock) => {
+    const queryRef = doc(db, "items", `${id}`);
+    updateDoc(queryRef, { stock: nuevoStock });
   };
+  let mostrarIds = () => {
+    value.productCartList.forEach((res) => {
+      console.log(`Stock actual:${res.stock}`);
+      let nuevoStock = res.stock - res.quantity;
+      actualizarStock(res.id, nuevoStock);
+    });
+  };
+  if (idOrder) {
+    Swal.fire({
+      title: `Compra realizada con éxito`,
+      text: `Ante cualquier problema consultar por la orden ${idOrder}`,
+      color: "#fff",
+      customClass: {
+        popup: "ModalCompra",
+        title: "textoModal",
+        confirmButton: "botonConfirmacion",
+      },
+    }).then((res) => {
+      setIdOrder("");
+      mostrarIds();
+      value.clearAllItems();
+    });
+  }
   let carritoOcupado = (
     <div className="fondoCarritoLLeno">
       <div className="fondoProductos">
@@ -55,15 +68,10 @@ export const CartContainer = () => {
             Email: <input type="email" className="emailComprador" required />
           </label>
         </form>
-        {idOrder && (
-          <>
-            <button onClick={updateOrder}>Actualizar orden</button>
-            <p>Su orden fue creada, id:{idOrder}</p>
-          </>
-        )}
+
         <h5>Carrito:</h5>
         {value.productCartList.map((item) => (
-          <IndividualCartItem key={item.id} item={item}  value={value} />
+          <IndividualCartItem key={item.id} item={item} value={value} />
         ))}
       </div>
       <div className="footerCarritoLleno">

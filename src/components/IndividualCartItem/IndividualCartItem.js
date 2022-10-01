@@ -4,6 +4,7 @@ import { GoTriangleUp, GoTriangleDown } from "react-icons/go";
 import { useState, useEffect } from "react";
 import { useContext } from "react";
 import { CartContext } from "../context/CartContext";
+import Swal from "sweetalert2";
 import "./estilos.css";
 
 export const IndividualCartItem = ({ item }) => {
@@ -14,7 +15,14 @@ export const IndividualCartItem = ({ item }) => {
   }, [cantidad]);
   let aumentarCantidad = () => {
     if (cantidad >= item.stock) {
-      alert(`No hay suficiente stock`);
+      Swal.fire({
+        title: `No hay suficiente stock del producto seleccionado.`,
+        customClass: {
+          popup: "ModalCompra",
+          title: "textoModal",
+          confirmButton: "botonConfirmacion",
+        },
+      });
     } else {
       setCantidad(cantidad + 1);
     }

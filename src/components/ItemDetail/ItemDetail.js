@@ -2,11 +2,10 @@ import React, { useEffect, useState, useContext } from "react";
 import "./item.css";
 import { ItemCount } from "../ItemCount/ItemCount";
 import { CartContext } from "../context/CartContext";
-import { Link  } from "react-router-dom";
+import { Link } from "react-router-dom";
 
 export const ItemDetail = ({ item }) => {
   const { addItem } = useContext(CartContext);
-
   let { name, description, price, image, stock, link } = item;
   const [contador, setContador] = useState(1);
 
@@ -60,12 +59,19 @@ export const ItemDetail = ({ item }) => {
                 product={name}
                 vincular={vincular}
                 añadirAlCarrito={añadirAlCarrito}
+                img={image}
               />
             ) : (
               <div className="juegoGratis">
-                <a href={link} target="blank"><button>Jugar</button></a>
-                <Link to="/juegos/gratis"><button>Ver otros juegos gratis</button></Link> 
-                <Link to="/juegos/pagos"><button>Ver juegos pagos</button></Link> 
+                <a href={link} target="blank">
+                  <button>Jugar</button>
+                </a>
+                <Link to="/juegos/gratis">
+                  <button>Ver otros juegos gratis</button>
+                </Link>
+                <Link to="/juegos/pagos">
+                  <button>Ver juegos pagos</button>
+                </Link>
               </div>
             )}
           </div>

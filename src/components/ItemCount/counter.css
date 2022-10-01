@@ -64,3 +64,22 @@
 .confirmarCompra:hover {
   background-color: rgb(187, 115, 223);
 }
+.ModalCompra{
+  background-color: #000!important;
+  box-shadow:0 0 2vw #aaff11;
+}
+.textoModal{
+  color: #aaff11!important;
+}
+.imagenModal{
+  width: 15vw ;
+  height: 15vw;
+  object-fit: cover;
+  object-position: center;
+}
+.botonConfirmacion{
+  background-color: #aaff11!important;
+  color: #000!important;
+  outline: none!important;
+  width: 15vw!important;
+}
